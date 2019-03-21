@@ -9,11 +9,11 @@ with open('HISTORY.rst') as f:
 
 
 setup(
-    name='wptools',
+    name='wptools_clone',
     version='0.4.17',
     description='Wikipedia tools (for Humans)',
     long_description=readme + '\n\n' + history,
-    url='https://github.com/siznax/wptools/',
+    url='https://github.com/ider-zh/wptools',
     license='MIT',
     author='Steve @siznax',
     author_email='steve@siznax.net',
