@@ -192,7 +192,7 @@ class WPToolsPage(WPToolsRESTBase,
 
         return qstr
 
-    def _set_data(self, action):
+    def _set_data(self, action, proxy, timeout):
         """
         marshals response data into page data
         """
@@ -212,7 +212,7 @@ class WPToolsPage(WPToolsRESTBase,
         elif action == 'restbase':
             self._set_restbase_data()
 
-        self._update_imageinfo()
+        self._update_imageinfo(proxy, timeout)
         self._update_params()
 
     def _set_imageinfo_data(self):
@@ -458,7 +458,7 @@ class WPToolsPage(WPToolsRESTBase,
             except KeyError:
                 self.data[datapoint] = {key: new_data}
 
-    def _update_imageinfo(self):
+    def _update_imageinfo(self,proxy, timeout):
         """
         calls get_imageinfo() if data image missing info
         """
@@ -467,7 +467,7 @@ class WPToolsPage(WPToolsRESTBase,
         continuing = self.data.get('continue')
 
         if missing and not deferred and not continuing:
-            self.get_imageinfo(show=False)
+            self.get_imageinfo(show=False, proxy=proxy, timeout=timeout)
 
     def _update_params(self):
         """

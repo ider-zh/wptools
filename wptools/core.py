@@ -180,7 +180,7 @@ class WPTools(object):
 
         self.data['requests'].append(action)
 
-        self._set_data(action)
+        self._set_data(action, proxy, timeout)
 
         if show and not self.flags.get('silent'):
             self.show()

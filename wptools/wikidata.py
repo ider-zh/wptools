@@ -166,8 +166,10 @@ class WPToolsWikidata(core.WPTools):
         self.data['wikidata_pageid'] = item.get('pageid')
 
         aliases = item.get('aliases')
-        if aliases:
-            aliases = [x['value'] for x in aliases[self.params['lang']]]
+        if aliases and self.params.get('lang') in aliases:
+            aliases = [x['value'] for x in aliases[self.params.get('lang')]]
+            if self.params.get('variant') and self.params.get('variant') in aliases:
+                aliases.extend([x['value'] for x in aliases[self.params.get('variant')]])
             self.data['aliases'] = aliases
 
         modified = item.get('modified')
