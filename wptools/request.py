@@ -110,6 +110,8 @@ class WPToolsRequest(object):
         crl = pycurl.Curl()
         crl.setopt(pycurl.USERAGENT, user_agent())
         crl.setopt(pycurl.FOLLOWLOCATION, True)
+        crl.setopt(pycurl.SSL_VERIFYPEER, 0)
+        crl.setopt(pycurl.SSL_VERIFYHOST, 0)
         crl.setopt(pycurl.CAINFO, certifi.where())
 
         if isinstance(proxy, str):
